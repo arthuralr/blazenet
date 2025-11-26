@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca Binaria Simulator</title>
+    <style>
+        p{
+            color: black;
+        }
+        body{
+            background-color: white;
+        }
+    </style>
+<body onload="iniciar()">
+    <h1>Busca Binaria   Simulator</h1>
+    <h3 id="mm">vamos comessar</h3>    <!--  -->
+     <input type="checkbox" id="box" onclick="dificil()">
+     <label for="box">modo dificil</label>
+    <button id="botao" onclick="cl()">aposte    </button>
+    <h2 id="mos"></h2>
+    <br>
+    <button id="enci" onclick="explicar()">explicar o jogo</button>
+    <script>
+       var chances=9
+       var m=document.getElementById("mm")
+       m.innerHTML="você tem "+chances+" tentativas"
+       var mostrar=document.getElementById("mos")
+       var agora = new Date()
+       var segundos=Number(agora.getSeconds())
+       var agora2=new Date()
+       var minutos=Number(agora.getMinutes())
+       var numer=segundos*minutos/30
+       var numero=Math.round(numer)
+    function cl(){
+        if(chances!=0){ 
+        var escolha=window.prompt("faça seu palpite")
+        if(escolha==numero){
+           mostrar.innerHTML="você acertou"
+           m.innerText="muito bem"
+           alert("você acertou,o jogo acabou")
+           location.reload(true)
+        }
+        else if(escolha>numero){
+        mostrar.innerHTML="o seu chute foi muito alto"
+        chances=chances-1
+        m.innerHTML="você tem "+chances
+        }
+    else if(escolha<numero){
+      mostrar.innerHTML="o numero é maior"
+      chances=chances-1
+      m.innerHTML="você tem "+chances
+    }}else{
+        alert("você perdeu")
+        location.reload()}
+}
+function dificil(){
+    if(chances==9){chances=4
+    m.innerHTML="você tem "+chances+" tentativas"}
+    else{var confirmar=confirm("confirme para reiniciar o jogo e voltar ao modo normal")
+    if(confirmar){
+        location.reload(true)
+    }    
+    }
+}
+function explicar(){
+    var explicar=alert("um numero seme aleatorio foi gerado de 1 a 92 tente acertar esse numero.")
+}
+//lucas not maicho
+    </script>
+</body>
+</html>
